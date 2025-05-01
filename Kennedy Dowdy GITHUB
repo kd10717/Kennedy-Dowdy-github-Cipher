@@ -1,0 +1,31 @@
+import sys
+
+def caesar_cipher(shift, message):
+    result = []
+    
+    # Convert to uppercase and process each character
+    for char in message:
+        if char.isalpha():
+            # Convert char to uppercase (if it's not already)
+            char = char.upper()
+            
+            # Shift the character and wrap around if necessary
+            shifted = chr(((ord(char) - ord('A') + shift) % 26) + ord('A'))
+            result.append(shifted)
+    
+    # Format the result in blocks of 5 characters, 10 blocks per line
+    output = ''.join(result)
+    for i in range(0, len(output), 5):
+        print(output[i:i+5], end=" ")
+        if (i + 5) % 50 == 0:
+            print()  # Newline after every 10 blocks
+    
+if __name__ == "__main__":
+    # Get the shift value from the command line argument
+    shift = int(sys.argv[1])
+    
+    # Read the input message from stdin
+    message = sys.stdin.read()
+    
+    # Apply the Caesar cipher with the given shift
+    caesar_cipher(shift, message)
