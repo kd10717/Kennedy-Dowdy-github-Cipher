@@ -29,3 +29,5 @@ if __name__ == "__main__":
     
     # Apply the Caesar cipher with the given shift
     caesar_cipher(shift, message)
+
+python3 mycipher.py 23 < cryptedtext > newplaintext
